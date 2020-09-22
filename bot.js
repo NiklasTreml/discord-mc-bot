@@ -17,9 +17,17 @@ let helpEmbed = {
             "icon_url": "https://static.wikia.nocookie.net/minecraft_de_gamepedia/images/7/7c/Grasblock.png/revision/latest/scale-to-width-down/1200?cb=20200309173037"
         },
         "fields": [{
-            "name": "Get IP and status of the Server",
-            "value": "*ip"
-        }]
+                "name": "Get IP and status of the Server",
+                "value": "*ip"
+            },
+            {
+                "name": "Display this help page",
+                "value": "*help"
+            }, {
+                "name": "Ping the bot",
+                "value": "*ping"
+            }
+        ]
     }
 }
 const Discord = require('discord.js');

@@ -2,8 +2,10 @@ from mcstatus import MinecraftServer
 import json
 import time 
 # If you know the host and port, you may skip this and use MinecraftServer("example.org", 1234)
+ip = input("Enter Minecraft Server IP or FQDN:\n-  ")
+
 while True:
-    server = MinecraftServer.lookup("159.69.39.221")
+    server = MinecraftServer.lookup(ip)
     query = server.query()
 
     print("QUERY RAW:",query.raw)
