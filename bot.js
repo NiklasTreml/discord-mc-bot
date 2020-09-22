@@ -47,7 +47,6 @@ client.on('ready', () => {
 client.on('message', msg => {
     if (msg.content === prefix + 'ping') {
         msg.reply("pong")
-
     }
 });
 
