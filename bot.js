@@ -7,6 +7,7 @@ let serverInfo
 
 let colorCode = 0x567d46
 let statusEmbed
+let gitLink = "https://github.com/NiklasTreml/discord-mc-bot"
 let helpEmbed = {
     "embed": {
         "title": "Minecraft Server Status",
@@ -23,6 +24,10 @@ let helpEmbed = {
             {
                 "name": "Display this help page",
                 "value": "*help"
+            },
+            {
+                "name": "Look at the Source Code",
+                "value": "*source"
             },
             {
                 "name": "Ping the bot",
@@ -50,6 +55,12 @@ client.on('message', msg => {
     if (msg.content === prefix + 'help') {
         msg.reply(helpEmbed)
 
+    }
+});
+
+client.on('message', msg => {
+    if (msg.content === prefix + 'source') {
+        msg.reply("Source Code in Git Repo: " + gitLink)
     }
 });
 
