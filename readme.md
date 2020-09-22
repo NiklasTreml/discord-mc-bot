@@ -1,0 +1,1 @@
+Discord bot for displaying stuff about an mc server
