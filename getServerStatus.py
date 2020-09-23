@@ -1,9 +1,14 @@
 from mcstatus import MinecraftServer
 import json
 import time 
-# If you know the host and port, you may skip this and use MinecraftServer("example.org", 1234)
-ip = input("Enter Minecraft Server IP or FQDN:\n-  ")
+from dotenv import load_dotenv
+import os
 
+
+load_dotenv()
+# If you know the host and port, you may skip this and use MinecraftServer("example.org", 1234)
+#ip = input("Enter Minecraft Server IP or FQDN:\n-  ")
+ip = os.getenv("SERVER_IP")
 while True:
     try:
         server = MinecraftServer.lookup(ip)
