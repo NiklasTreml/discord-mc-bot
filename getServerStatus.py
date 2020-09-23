@@ -4,11 +4,13 @@ import time
 from dotenv import load_dotenv
 import os
 
+print("Data Gatherer Starting...")
 
 load_dotenv()
 # If you know the host and port, you may skip this and use MinecraftServer("example.org", 1234)
 #ip = input("Enter Minecraft Server IP or FQDN:\n-  ")
 ip = os.getenv("SERVER_IP")
+print("Got IP")
 while True:
     try:
         server = MinecraftServer.lookup(ip)

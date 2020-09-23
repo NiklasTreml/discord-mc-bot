@@ -1,25 +1,25 @@
 {
-  "name": "discord-mc-bot",
-  "version": "1.0.0",
-  "description": "Discord bot for displaying stuff about an mc server",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NiklasTreml/discord-mc-bot.git"
-  },
-  "author": "Niklas Treml",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/NiklasTreml/discord-mc-bot/issues"
-  },
-  "homepage": "https://github.com/NiklasTreml/discord-mc-bot#readme",
-  "dependencies": {
-    "concurrently": "^5.3.0",
-    "discord.js": "^12.3.1",
-    "dotenv": "^8.2.0"
-  }
+    "name": "discord-mc-bot",
+    "version": "1.0.0",
+    "description": "Discord bot for displaying stuff about an mc server",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "concurrently \"python getServerStatus.py\" \"node bot\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/NiklasTreml/discord-mc-bot.git"
+    },
+    "author": "Niklas Treml",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/NiklasTreml/discord-mc-bot/issues"
+    },
+    "homepage": "https://github.com/NiklasTreml/discord-mc-bot#readme",
+    "dependencies": {
+        "concurrently": "^5.3.0",
+        "discord.js": "^12.3.1",
+        "dotenv": "^8.2.0"
+    }
 }
