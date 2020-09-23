@@ -1,4 +1,4 @@
-##**Discord bot for displaying stuff about an mc server**
+**Discord bot for displaying stuff about an mc server**
 
 It is required to create a discord bot account to use this bot.
 
