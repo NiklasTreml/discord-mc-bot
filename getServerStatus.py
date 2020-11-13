@@ -15,6 +15,6 @@ try:
     query = server.query()
 
     print(json.dumps(query.raw))
-    #print("The server has the following players online: {0}".format(", ".join(query.players.names)))
+
 except:
     errorMessage = {"error": "An Error occurred"}

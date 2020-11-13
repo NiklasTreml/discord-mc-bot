@@ -1,10 +1,7 @@
 require('dotenv').config();
+require('console-stamp')(console, 'ddd mmm dd yyyy HH:MM:ss');
 
-const fs = require('fs');
 const spawn = require("child_process").spawn;
-
-
-let rawdata
 let serverInfo
 
 let colorCode = 0x567d46
@@ -45,12 +42,17 @@ let prefix = "*"
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     setInterval(() => {
-        data = JSON.parse(fs.readFileSync("data.json"));
-        if (data.error) {
-            client.user.setActivity("Server currently down");
-        } else {
-            client.user.setActivity("on " + data.hostip + ":" + data.hostport)
-        }
+        let collector = spawn('python', ["getServerStatus.py"]);
+
+        collector.stdout.on("data", code => {
+            serverInfo = JSON.parse(code.toString())
+
+            if (serverInfo.error) {
+                client.user.setActivity("Server currently down");
+            } else {
+                client.user.setActivity("on " + serverInfo.hostip + ":" + serverInfo.hostport)
+            }
+        })
 
     }, 2 * 1000)
 });
@@ -58,7 +60,8 @@ client.on('ready', () => {
 client.on('message', msg => {
     if (msg.content === prefix + 'ping') {
         msg.reply("pong")
-        console.log("Ping")
+
+        console.log("Ping from", msg.author.username)
     }
 });
 
@@ -66,18 +69,22 @@ client.on('message', msg => {
     if (msg.content === prefix + 'help') {
         msg.reply(helpEmbed)
 
+        console.log("Help from", msg.author.username)
     }
 });
 
 client.on('message', msg => {
     if (msg.content === prefix + 'source') {
         msg.reply("Source Code in Git Repo: " + gitLink)
+
+        console.log("Source from", msg.author.username)
     }
 });
 
 client.on("message", msg => {
     if (msg.content === prefix + "ip" || msg.content === prefix + "status") {
 
+        console.log("Status from", msg.author.username)
         let collector = spawn('python', ["getServerStatus.py"]);
 
         collector.stdout.on("data", code => {

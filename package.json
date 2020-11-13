@@ -1,6 +1,6 @@
 {
     "name": "discord-mc-bot",
-    "version": "1.0.0",
+    "version": "1.1.2",
     "description": "Discord bot for displaying stuff about an mc server",
     "main": "server.js",
     "scripts": {
@@ -19,7 +19,11 @@
     "homepage": "https://github.com/NiklasTreml/discord-mc-bot#readme",
     "dependencies": {
         "concurrently": "^5.3.0",
+        "console-stamp": "^0.2.9",
         "discord.js": "^12.3.1",
         "dotenv": "^8.2.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
     }
 }
