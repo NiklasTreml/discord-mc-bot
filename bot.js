@@ -4,6 +4,7 @@ require('console-stamp')(console, 'ddd mmm dd yyyy HH:MM:ss');
 const spawn = require("child_process").spawn;
 let serverInfo
 
+let prefix = "*"
 let colorCode = 0x567d46
 let statusEmbed
 let gitLink = "https://github.com/NiklasTreml/discord-mc-bot"
@@ -18,26 +19,26 @@ let helpEmbed = {
         },
         "fields": [{
                 "name": "Get IP and status of the Server",
-                "value": "*ip, *status"
+                "value": prefix + "ip, *status"
             },
             {
                 "name": "Display this help page",
-                "value": "*help"
+                "value": prefix + "help"
             },
             {
                 "name": "Look at the Source Code",
-                "value": "*source"
+                "value": prefix + "source"
             },
             {
                 "name": "Ping the bot",
-                "value": "*ping"
+                "value": prefix + "ping"
             }
         ]
     }
 }
 const Discord = require('discord.js');
 const client = new Discord.Client();
-let prefix = "*"
+
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
