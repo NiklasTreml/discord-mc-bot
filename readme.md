@@ -9,5 +9,4 @@ Create a .env file in the root directory of the bot and then add your discord to
 DISCORD_TOKEN=YOUR-TOKEN
 SERVER_IP=YO.UR.MC.IP
 
-Then start the bot with node bot.js and start the python script with python getServerStatus.py
-The python script will ask you for the servers ip
+Then start the bot with node bot.js. The python script will be called as a subprocess
