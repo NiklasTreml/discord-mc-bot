@@ -20,3 +20,4 @@ try:
 
 except:
     errorMessage = {"error": "An Error occurred"}
+    print(json.dumps(errorMessage))

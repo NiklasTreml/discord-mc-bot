@@ -3,14 +3,14 @@ require('console-stamp')(console, 'ddd mmm dd yyyy HH:MM:ss');
 
 const spawn = require("child_process").spawn;
 let serverInfo
-
+let embedTitle = "Minecraft Server Status"
 let prefix = "*"
 let colorCode = 0x567d46
 let statusEmbed
 let gitLink = "https://github.com/NiklasTreml/discord-mc-bot"
 let helpEmbed = {
     "embed": {
-        "title": "Minecraft Server Status",
+        "title": embedTitle,
         "color": colorCode,
 
         "author": {
@@ -19,7 +19,7 @@ let helpEmbed = {
         },
         "fields": [{
                 "name": "Get IP and status of the Server",
-                "value": prefix + "ip, *status"
+                "value": prefix + "ip, " + prefix + "status"
             },
             {
                 "name": "Display this help page",
@@ -32,6 +32,10 @@ let helpEmbed = {
             {
                 "name": "Ping the bot",
                 "value": prefix + "ping"
+            },
+            {
+                "name": "Receive a list of active players",
+                "value": prefix + "players"
             }
         ]
     }
@@ -84,15 +88,50 @@ client.on('message', msg => {
 
 client.on("message", msg => {
     if (msg.content === prefix + "players") {
-
+        console.log("Players")
         let collector = spawn('python', ["getPlayers.py"]);
 
 
         collector.stdout.on("data", code => {
 
-            playersList = JSON.parse(code.toString())
-            msg.reply(playersList)
-            console.log("Players")
+            serverInfo = JSON.parse(code.toString())
+            console.log(serverInfo)
+
+            if (serverInfo.error) {
+                statusEmbed = {
+                    "embed": {
+                        "title": embedTitle,
+                        "color": colorCode,
+
+                        "author": {
+                            "name": "Help",
+                            "icon_url": "https://static.wikia.nocookie.net/minecraft_de_gamepedia/images/7/7c/Grasblock.png/revision/latest/scale-to-width-down/1200?cb=20200309173037"
+                        },
+                        "fields": [{
+                            "name": "Error",
+                            "value": serverInfo.error
+                        }]
+                    }
+                }
+                console.log("Sent Error")
+            } else {
+                statusEmbed = statusEmbed = {
+                    "embed": {
+                        "title": embedTitle,
+                        "color": colorCode,
+
+                        "author": {
+                            "name": "Help",
+                            "icon_url": "https://static.wikia.nocookie.net/minecraft_de_gamepedia/images/7/7c/Grasblock.png/revision/latest/scale-to-width-down/1200?cb=20200309173037"
+                        },
+                        "fields": [{
+                            "name": "Players",
+                            "value": serverInfo.names
+                        }]
+                    }
+                }
+            }
+            msg.reply(statusEmbed)
         })
 
 
@@ -114,7 +153,7 @@ client.on("message", msg => {
             if (serverInfo.error) {
                 statusEmbed = {
                     "embed": {
-                        "title": "Minecraft Server Status",
+                        "title": embedTitle,
                         "color": colorCode,
 
                         "author": {
@@ -131,7 +170,7 @@ client.on("message", msg => {
             } else {
                 statusEmbed = {
                     "embed": {
-                        "title": "Minecraft Server Status",
+                        "title": embedTitle,
                         "color": colorCode,
 
                         "author": {
