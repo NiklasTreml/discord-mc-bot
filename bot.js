@@ -200,6 +200,11 @@ client.on("message", msg => {
                                 "name": "Map",
                                 "value": serverInfo.map,
                                 "inline": true
+                            },
+                            {
+                                "name": "Active Plugins",
+                                "value": serverInfo.plugins,
+                                "inline": false
                             }
                         ]
                     }
