@@ -83,6 +83,23 @@ client.on('message', msg => {
 });
 
 client.on("message", msg => {
+    if (msg.content === prefix + "players") {
+
+        let collector = spawn('python', ["getPlayers.py"]);
+
+
+        collector.stdout.on("data", code => {
+
+            playersList = JSON.parse(code.toString())
+            msg.reply(playersList)
+            console.log("Players")
+        })
+
+
+    }
+})
+
+client.on("message", msg => {
     if (msg.content === prefix + "ip" || msg.content === prefix + "status") {
 
         console.log("Status from", msg.author.username)
