@@ -1,6 +1,6 @@
 {
     "name": "discord-mc-bot",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "Discord bot for displaying stuff about an mc server",
     "main": "server.js",
     "scripts": {
