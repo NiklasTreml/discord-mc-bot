@@ -98,7 +98,7 @@ client.on("message", msg => {
             console.log(serverInfo)
 
             if (serverInfo.error) {
-                statusEmbed = {
+                playersEmbed = {
                     "embed": {
                         "title": embedTitle,
                         "color": colorCode,
@@ -115,7 +115,7 @@ client.on("message", msg => {
                 }
                 console.log("Sent Error")
             } else {
-                statusEmbed = statusEmbed = {
+                playersEmbed = {
                     "embed": {
                         "title": embedTitle,
                         "color": colorCode,
@@ -131,7 +131,7 @@ client.on("message", msg => {
                     }
                 }
             }
-            msg.reply(statusEmbed)
+            msg.reply(playersEmbed)
         })
 
 
