@@ -41,6 +41,10 @@ let helpEmbed = {
             {
                 "name": "Receive a list of active players",
                 "value": prefix + "players"
+            },
+            {
+                "name": "Shows the bot's current version",
+                "value": prefix + "version"
             }
         ]
     }
@@ -82,6 +86,14 @@ client.on('message', msg => {
         console.log("Help from", msg.author.username)
     }
 });
+
+client.on("message", msg => {
+    if (msg.content === prefix + "version") {
+        msg.reply("Current Version is v" + pjson.version)
+
+        console.log("Version from", msg.author.username)
+    }
+})
 
 client.on('message', msg => {
     if (msg.content === prefix + 'source') {
@@ -137,6 +149,7 @@ client.on("message", msg => {
                 }
             }
             msg.reply(playersEmbed)
+            console.log("Players from", msg.author.username)
         })
 
 
