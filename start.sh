@@ -1,1 +1,1 @@
-screen -L -S discordBot npm start
+forever start -l forever.log -o out.log -e err.log -a bot.js
