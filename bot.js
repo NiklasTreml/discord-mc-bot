@@ -10,6 +10,7 @@ let colorCode = 0x567d46
 let statusEmbed
 let gitLink = "https://github.com/NiklasTreml/discord-mc-bot"
 
+let pythonV = "python"
 
 
 let helpEmbed = {
@@ -51,7 +52,7 @@ const client = new Discord.Client();
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     setInterval(() => {
-        let collector = spawn('python', ["getServerStatus.py"]);
+        let collector = spawn(pythonV, ["getServerStatus.py"]);
 
         collector.stdout.on("data", code => {
             serverInfo = JSON.parse(code.toString())
@@ -93,7 +94,7 @@ client.on('message', msg => {
 client.on("message", msg => {
     if (msg.content === prefix + "players") {
         console.log("Players")
-        let collector = spawn('python', ["getPlayers.py"]);
+        let collector = spawn(pythonV, ["getPlayers.py"]);
 
 
         collector.stdout.on("data", code => {
@@ -146,7 +147,7 @@ client.on("message", msg => {
     if (msg.content === prefix + "ip" || msg.content === prefix + "status") {
 
         console.log("Status from", msg.author.username)
-        let collector = spawn('python', ["getServerStatus.py"]);
+        let collector = spawn(pythonV, ["getServerStatus.py"]);
 
         collector.stdout.on("data", code => {
             serverInfo = JSON.parse(code.toString())
