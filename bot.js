@@ -2,15 +2,19 @@ require('dotenv').config();
 require('console-stamp')(console, 'ddd mmm dd yyyy HH:MM:ss');
 
 const spawn = require("child_process").spawn;
+let pjson = require('./package.json');
 let serverInfo
 let embedTitle = "Minecraft Server Status"
 let prefix = "*"
 let colorCode = 0x567d46
 let statusEmbed
 let gitLink = "https://github.com/NiklasTreml/discord-mc-bot"
+
+
+
 let helpEmbed = {
     "embed": {
-        "title": embedTitle,
+        "title": embedTitle + " v" + pjson.version,
         "color": colorCode,
 
         "author": {
