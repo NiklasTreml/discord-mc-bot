@@ -117,7 +117,7 @@ client.on("message", msg => {
             if (serverInfo.error) {
                 playersEmbed = {
                     "embed": {
-                        "title": "Active Players",
+                        "title": embedTitle,
                         "color": colorCode,
 
                         "author": {
@@ -138,7 +138,7 @@ client.on("message", msg => {
                         "color": colorCode,
 
                         "author": {
-                            "name": "Help",
+                            "name": "Active Players",
                             "icon_url": "https://static.wikia.nocookie.net/minecraft_de_gamepedia/images/7/7c/Grasblock.png/revision/latest/scale-to-width-down/1200?cb=20200309173037"
                         },
                         "fields": [{
