@@ -117,7 +117,7 @@ client.on("message", msg => {
             if (serverInfo.error) {
                 playersEmbed = {
                     "embed": {
-                        "title": embedTitle,
+                        "title": "Active Players",
                         "color": colorCode,
 
                         "author": {
